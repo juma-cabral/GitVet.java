@@ -37,7 +37,7 @@ O código foi estruturado seguindo boas práticas de Orientação a Objetos (POO
 * **Buscas:** Utilização de `Streams` para consultas eficientes por ID.
 * **Interface:** Console interativo com tratamento de erros em entradas de usuário.
 
-## 🤝 Contribuições
+##  Contribuições
 Este projeto foi desenvolvido como parte de um estudo sobre modelagem de sistemas. Sinta-se à vontade para sugerir melhorias ou realizar um *fork* para adicionar novas funcionalidades.
 
 ---
