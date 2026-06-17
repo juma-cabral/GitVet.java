@@ -17,12 +17,12 @@ public class GerenciamentoAnimais {
                                 int idade, int tutorId) {
         Tutor tutor = gerenciamentoTutores.buscarPorId(tutorId);
         if (tutor == null) {
-            System.out.println("  ✗ Tutor com ID " + tutorId + " não encontrado.");
+            System.out.println("Tutor com ID " + tutorId + " não encontrado.");
             return null;
         }
         Animal animal = new Animal(proximoId++, nome, especie, raca, idade, tutorId);
         animais.add(animal);
-        System.out.println("  ✓ Animal cadastrado com sucesso! ID: " + animal.getId());
+        System.out.println("Animal cadastrado com sucesso! ID: " + animal.getId());
         return animal;
     }
 
@@ -43,13 +43,13 @@ public class GerenciamentoAnimais {
                                  String novaRaca, int novaIdade, int novoTutorId) {
         Animal animal = buscarPorId(id);
         if (animal == null) {
-            System.out.println("  ✗ Animal com ID " + id + " não encontrado.");
+            System.out.println("Animal com ID " + id + " não encontrado.");
             return false;
         }
         if (novoTutorId > 0) {
             Tutor tutor = gerenciamentoTutores.buscarPorId(novoTutorId);
             if (tutor == null) {
-                System.out.println("  ✗ Tutor com ID " + novoTutorId + " não encontrado.");
+                System.out.println("Tutor com ID " + novoTutorId + " não encontrado.");
                 return false;
             }
             animal.setTutorId(novoTutorId);
@@ -58,7 +58,7 @@ public class GerenciamentoAnimais {
         if (novaEspecie != null && !novaEspecie.isBlank()) animal.setEspecie(novaEspecie);
         if (novaRaca != null && !novaRaca.isBlank())       animal.setRaca(novaRaca);
         if (novaIdade > 0)                                 animal.setIdade(novaIdade);
-        System.out.println("  ✓ Animal ID " + id + " atualizado com sucesso!");
+        System.out.println("Animal ID " + id + " atualizado com sucesso!");
         return true;
     }
 
@@ -66,9 +66,9 @@ public class GerenciamentoAnimais {
     public boolean excluirAnimal(int id) {
         boolean removido = animais.removeIf(a -> a.getId() == id);
         if (removido) {
-            System.out.println("  ✓ Animal ID " + id + " removido com sucesso!");
+            System.out.println("Animal ID " + id + " removido com sucesso!");
         } else {
-            System.out.println("  ✗ Animal com ID " + id + " não encontrado.");
+            System.out.println("Animal com ID " + id + " não encontrado.");
         }
         return removido;
     }

@@ -17,13 +17,13 @@ public class GerenciamentoConsultas {
                                     String veterinario, String motivo, String observacoes) {
         Animal animal = gerenciamentoAnimais.buscarPorId(animalId);
         if (animal == null) {
-            System.out.println("  ✗ Animal com ID " + animalId + " não encontrado.");
+            System.out.println("Animal com ID " + animalId + " não encontrado.");
             return null;
         }
         Consulta consulta = new Consulta(proximoId++, animalId, data, horario,
                 veterinario, motivo, observacoes);
         consultas.add(consulta);
-        System.out.println("  ✓ Consulta cadastrada com sucesso! ID: " + consulta.getId());
+        System.out.println("Consulta cadastrada com sucesso! ID: " + consulta.getId());
         return consulta;
     }
 
@@ -53,7 +53,7 @@ public class GerenciamentoConsultas {
                                    String novasObservacoes) {
         Consulta consulta = buscarPorId(id);
         if (consulta == null) {
-            System.out.println("  ✗ Consulta com ID " + id + " não encontrada.");
+            System.out.println("Consulta com ID " + id + " não encontrada.");
             return false;
         }
         if (novaData != null && !novaData.isBlank())          consulta.setData(novaData);
@@ -61,7 +61,7 @@ public class GerenciamentoConsultas {
         if (novoVeterinario != null && !novoVeterinario.isBlank()) consulta.setVeterinario(novoVeterinario);
         if (novoMotivo != null && !novoMotivo.isBlank())      consulta.setMotivo(novoMotivo);
         if (novasObservacoes != null)                         consulta.setObservacoes(novasObservacoes);
-        System.out.println("  ✓ Consulta ID " + id + " atualizada com sucesso!");
+        System.out.println("Consulta ID " + id + " atualizada com sucesso!");
         return true;
     }
 
@@ -69,9 +69,9 @@ public class GerenciamentoConsultas {
     public boolean excluirConsulta(int id) {
         boolean removido = consultas.removeIf(c -> c.getId() == id);
         if (removido) {
-            System.out.println("  ✓ Consulta ID " + id + " removida com sucesso!");
+            System.out.println("Consulta ID " + id + " removida com sucesso!");
         } else {
-            System.out.println("  ✗ Consulta com ID " + id + " não encontrada.");
+            System.out.println("Consulta com ID " + id + " não encontrada.");
         }
         return removido;
     }
