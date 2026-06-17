@@ -1,4 +1,4 @@
-# 🐾 Sistema de Gestão de Clínica Veterinária (GitVet)
+#  Sistema de Gestão de Clínica Veterinária (GitVet)
 
 O **GitVet** é uma aplicação Java robusta desenvolvida para o gerenciamento eficiente de clínicas veterinárias. O sistema permite realizar operações de CRUD (Criar, Ler, Atualizar, Deletar) para **Tutores**, **Animais** e **Consultas**, mantendo o relacionamento entre as entidades de forma organizada e segura em memória.
 
