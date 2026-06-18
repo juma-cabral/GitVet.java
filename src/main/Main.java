@@ -373,7 +373,7 @@ public class Main {
         System.out.println("  (Dados de exemplo carregados)");
         gerTutores.incluirTutor("Carlos Silva", "(81) 99999-1111", "carlos@email.com", "111.222.333-44");
         gerTutores.incluirTutor("Ana Souza",    "(81) 98888-2222", "ana@email.com",    "555.666.777-88");
-        gerTutores.incluirTutor("João Lima",    "(81) 97777-3333", "joao@email.com",   "999.000.111-22");
+        gerTutores.incluirTutor("Luga Lima",    "(81) 97777-3333", "Luga@email.com",   "999.000.111-22");
 
         gerAnimais.incluirAnimal("Rex",     "Cão",  "Labrador", 3, 1);
         gerAnimais.incluirAnimal("Mimi",    "Gato", "Siamês",   5, 2);

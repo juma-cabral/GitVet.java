@@ -11,7 +11,7 @@ public class GerenciamentoTutores {
     public Tutor incluirTutor(String nome, String telefone, String email, String cpf) {
         Tutor tutor = new Tutor(proximoId++, nome, telefone, email, cpf);
         tutores.add(tutor);
-        System.out.println("  ✓ Tutor cadastrado com sucesso! ID: " + tutor.getId());
+        System.out.println("Tutor cadastrado com sucesso! ID: " + tutor.getId());
         return tutor;
     }
 
@@ -32,14 +32,14 @@ public class GerenciamentoTutores {
                                 String novoEmail, String novoCpf) {
         Tutor tutor = buscarPorId(id);
         if (tutor == null) {
-            System.out.println("  ✗ Tutor com ID " + id + " não encontrado.");
+            System.out.println("Tutor com ID " + id + "não encontrado.");
             return false;
         }
         if (novoNome != null && !novoNome.isBlank())           tutor.setNome(novoNome);
         if (novoTelefone != null && !novoTelefone.isBlank())   tutor.setTelefone(novoTelefone);
         if (novoEmail != null && !novoEmail.isBlank())         tutor.setEmail(novoEmail);
         if (novoCpf != null && !novoCpf.isBlank())             tutor.setCpf(novoCpf);
-        System.out.println("  ✓ Tutor ID " + id + " atualizado com sucesso!");
+        System.out.println("Tutor ID " + id + "atualizado com sucesso!");
         return true;
     }
 
@@ -47,9 +47,9 @@ public class GerenciamentoTutores {
     public boolean excluirTutor(int id) {
         boolean removido = tutores.removeIf(t -> t.getId() == id);
         if (removido) {
-            System.out.println("  ✓ Tutor ID " + id + " removido com sucesso!");
+            System.out.println("Tutor ID " + id + "removido com sucesso!");
         } else {
-            System.out.println("  ✗ Tutor com ID " + id + " não encontrado.");
+            System.out.println("Tutor com ID " + id + "não encontrado.");
         }
         return removido;
     }
