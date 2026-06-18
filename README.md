@@ -1,50 +1,44 @@
-#  GitVet - Sistema de Clínica Veterinária
+#  Sistema de Gestão de Clínica Veterinária (GitVet)
 
-O **GitVet** é um sistema completo de gerenciamento para clínicas veterinárias desenvolvido em **Java**. O projeto nasceu originalmente como uma aplicação rodando puramente em console (com persistência de dados em memória) e evoluiu para uma API robusta integrada ao ecossistema **Spring Boot** com banco de dados relacional **PostgreSQL**.
+O **GitVet** é uma aplicação Java robusta desenvolvida para o gerenciamento eficiente de clínicas veterinárias. O sistema permite realizar operações de CRUD (Criar, Ler, Atualizar, Deletar) para **Tutores**, **Animais** e **Consultas**, mantendo o relacionamento entre as entidades de forma organizada e segura em memória.
 
-Para manter a simplicidade e o formato de estudos original, o sistema conta com uma interface interativa via terminal que se comunica diretamente com o banco de dados através de camadas de serviços modernas, unindo o conforto do menu clássico ao poder do armazenamento definitivo.
+## Funcionalidades
 
----
+O sistema é dividido em três módulos principais:
 
-##  Evolução do Projeto
+* **Gerenciamento de Tutores:** Cadastro, listagem, busca e edição de dados de clientes.
+* **Gerenciamento de Animais:** Registro de pets com vínculo obrigatório a um tutor (via ID), permitindo controle preciso de histórico.
+* **Gerenciamento de Consultas:** Agendamento de consultas médicas vinculadas a animais, com histórico de atendimentos, veterinário responsável e observações.
 
-O projeto foi construído em duas etapas principais ao longo do período de estudos:
-1. **Fase Inicial (Console & Memória):** Criação das regras de negócio, orientação a objetos (`Tutor`, `Animal`, `Consulta`), coleções para armazenamento temporário e validações de fluxo com `Scanner`.
-2. **Fase Atual (Spring Boot & Banco de Dados):** Substituição do gerenciamento em memória por persistência real utilizando **Spring Data JPA** e **PostgreSQL**. Toda a estrutura visual do menu clássico foi mantida, mas agora os dados são salvos permanentemente no banco.
+##  Arquitetura do Projeto
 
----
+O código foi estruturado seguindo boas práticas de Orientação a Objetos (POO):
+
+1. **Entidades (Models):** Representam os dados (`Tutor`, `Animal`, `Consulta`).
+2. **Gerenciadores (Services):** Contêm a lógica de negócio e manipulação das coleções de dados (`GerenciamentoTutores`, `GerenciamentoAnimais`, `GerenciamentoConsultas`).
+3. **Interface de Usuário (Main):** Interface de console menu-driven que interage com o usuário e valida as entradas de dados.
+
+##  Como Executar
+
+### Pré-requisitos
+* **JDK 11** ou superior instalado.
+* Qualquer IDE de sua preferência (IntelliJ IDEA, Eclipse, VS Code).
+
+### Passos
+1. Clone este repositório para sua máquina local.
+2. Importe o projeto na sua IDE.
+3. Compile as classes dentro do pacote `main`.
+4. Execute a classe `Main.java`.
+5. O sistema iniciará automaticamente com **dados de teste** populados para facilitar a demonstração das funcionalidades.
 
 ##  Tecnologias Utilizadas
+* **Linguagem:** Java (Standard Edition).
+* **Estruturas de Dados:** `ArrayList` e `List` para armazenamento em memória.
+* **Buscas:** Utilização de `Streams` para consultas eficientes por ID.
+* **Interface:** Console interativo com tratamento de erros em entradas de usuário.
 
-* **Linguagem:** Java (JDK 17 ou superior)
-* **Framework Principal:** Spring Boot 3.x
-* **Persistência de Dados (ORM):** Spring Data JPA / Hibernate
-* **Banco de Dados:** PostgreSQL
-* **Ferramenta de Build:** Maven
+##  Contribuições
+Este projeto foi desenvolvido como parte de um estudo sobre modelagem de sistemas. Sinta-se à vontade para sugerir melhorias ou realizar um *fork* para adicionar novas funcionalidades.
 
 ---
-
-##  Arquitetura do Sistema (Para Desenvolvedores)
-
-O sistema foi estruturado utilizando a **Arquitetura em Camadas** (Multi-tier Architecture), que é o padrão de mercado para aplicações corporativas com Spring Boot. Essa divisão garante a separação de responsabilidades, facilitando a manutenção e a escalabilidade do código.
-
-### As Camadas do Projeto
-
-* **Camada de Apresentação (`MenuConsole.java`):** É a interface com o usuário. Utiliza um menu interativo via terminal com capturas validadas (`Scanner`). Ela roda em uma *Thread* paralela para não travar a inicialização do ecossistema Spring, capturando as entradas do teclado e delegando as ações para a camada de serviço.
-* **Camada de Negócio / Serviço (`package service`):** Onde ficam as regras de negócio e validações (ex: verificar se um tutor existe antes de vincular um animal). Faz a ponte entre a interface do console e o banco de dados.
-* **Camada de Acesso a Dados / Repositório (`package repository`):** Interfaces que herdam de `JpaRepository`. Graças ao Spring Data JPA, os métodos de persistência (salvar, buscar, deletar, alterar) são gerados automaticamente em tempo de execução, dispensando a escrita manual de código SQL.
-* **Camada de Modelo / Entidades (`package model`):** Classes Java puras (`Tutor`, `Animal`, `Consulta`) mapeadas como tabelas do banco de dados através das anotações do **Hibernate/JPA** (`@Entity`, `@Table`, `@Id`, `@ManyToOne`, `@OneToMany`).
-
-### Fluxo de Dados (Exemplo: Cadastro de Tutor)
-`MenuConsole` (Lê os dados) ➔ `TutorService` (Processa e valida) ➔ `TutorRepository` (Traduz para SQL) ➔ `PostgreSQL` (Insere a linha permanentemente).
-
-### Estrutura de Pastas
-```text
-src/main/java/com/example/demo/
-│
-├── model/              # Classes de Entidade (Tutor, Animal, Consulta)
-├── repository/         # Interfaces de Acesso ao Banco de Dados (Spring Data JPA)
-├── service/            # Regras de Negócio e Lógica do Sistema (Services)
-│
-├── MenuConsole.java    # Interface de Linha de Comando (CommandLineRunner)
-└── DemoApplication.java# Inicializador do Spring Boot (Método Main)
+*Desenvolvido por Julianna Cabral.*
